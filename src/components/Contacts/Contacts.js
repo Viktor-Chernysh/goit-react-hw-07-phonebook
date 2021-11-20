@@ -1,26 +1,18 @@
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import ContactItem from './contactItem';
 import s from './Contacts.module.css';
 import { deleteContact } from '../../redux/contacts/contact-actions';
-import {
-  useFetchContactsQuery,
-  useDeleteContactMutation,
-} from '../../redux/contacts/contactsSlice';
+import { useFetchContactsQuery } from '../../redux/contacts/contactsSlice';
 
-function Contacts({ contacts, onDelete }) {
+function Contacts() {
   const { data, isFetching } = useFetchContactsQuery();
-  const [deleteContact, { isLoading: isDeleting }] = useDeleteContactMutation();
 
   return (
     <ol className={s.contact_list}>
-      {data?.map(({ id, name, number }) => (
-        <li className={s.contact_item} key={id}>
-          {name}:<span>{number}</span>{' '}
-          <button type="button" onClick={() => deleteContact(id)}>
-            {isDeleting ? 'Deleting...' : 'Delete'}
-          </button>
-        </li>
+      {data?.map(contact => (
+        <ContactItem key={contact.id} {...contact} />
       ))}
     </ol>
   );
