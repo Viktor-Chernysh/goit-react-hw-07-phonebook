@@ -1,0 +1,123 @@
+/* .form {
+  display: flex;
+  flex-direction: column;
+  color: rgb(206, 206, 206);
+  border-radius: 5px;
+  padding: 10px;
+  width: 250px;
+  background-color: #2b2b2a;
+}
+.button {
+  display: block;
+  padding: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  align-self: center;
+  background-color: rgb(200, 207, 197);
+  color: #2b2b2a;
+}
+.button:hover {
+  transform: scale(1.2);
+  background-color: rgb(42, 128, 9);
+  color: aliceblue;
+}
+.input {
+  margin-bottom: 10px;
+} */
+.form {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px;
+  padding: 10px 10px 20px 10px;
+  border: 6px solid rgb(187, 187, 187);
+  border-radius: 8px;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+    rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+    rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+  max-width: 500px;
+}
+
+.label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  margin-left: 15px;
+  /* margin-left: auto; */
+
+  height: 30px;
+  width: 450px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  color: #080808;
+  /* padding: 30px 0px -10px 30px; */
+}
+
+.input {
+  display: block;
+  margin: 10px auto;
+
+  /* margin-right: auto;
+  margin-left: auto; */
+  padding: 10px;
+  width: 100%;
+  border: 1px solid rgba(218, 213, 213, 0.2);
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: #030303;
+}
+
+.input:focus {
+  outline-color: rgb(119, 112, 126);
+}
+
+.button {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 10px 12px;
+  cursor: pointer;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 8px;
+  color: rgb(0, 0, 0);
+  background-color: #9b9b9b;
+  text-decoration: none;
+
+  transition: 0.2s ease-in-out;
+}
+
+.button:before {
+  content: '';
+  background: linear-gradient(
+    90deg,
+    rgba(139, 235, 152, 0.1),
+    rgba(21, 253, 0, 0.5)
+  );
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  top: -8px;
+  left: -75px;
+  transform: skewX(-45deg);
+  margin-top: 20px;
+}
+
+.button:hover {
+  background: #020202;
+  color: rgb(80, 253, 0);
+}
+
+.button:hover:before {
+  left: 150px;
+  transition: 0.7s ease-in-out;
+}
