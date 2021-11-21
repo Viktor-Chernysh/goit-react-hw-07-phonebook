@@ -1,6 +1,6 @@
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import MoonLoader from 'react-spinners/ClipLoader';
+import ClockLoader from 'react-spinners/ClockLoader';
 import { css } from '@emotion/react';
 
 import ContactItem from './contactItem';
@@ -25,10 +25,13 @@ function Contacts({ filter }) {
   };
   return (
     <ul className={s.contact_list}>
-      <MoonLoader loading={isFetching} size={60} css={override} />
-      {filteredContacts()?.map(contact => (
-        <ContactItem key={contact.id} {...contact} />
-      ))}
+      {isFetching ? (
+        <ClockLoader loading={isFetching} size={120} css={override} />
+      ) : (
+        filteredContacts()?.map(contact => (
+          <ContactItem key={contact.id} {...contact} />
+        ))
+      )}
     </ul>
   );
 }

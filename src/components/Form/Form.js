@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import ClockLoader from 'react-spinners/ClockLoader';
+import { css } from '@emotion/react';
 
 import s from './Form.module.css';
 import {
@@ -7,13 +9,19 @@ import {
   useFetchContactsQuery,
 } from '../../redux/contacts/contactsSlice';
 
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: white;
+`;
+
 const nameInputId = uuidv4();
 const numberInputId = uuidv4();
 
 function Form() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const [createContact] = useCreateContactMutation();
+  const [createContact, { isLoading }] = useCreateContactMutation();
   const { data } = useFetchContactsQuery();
 
   const handleSubmit = e => {
@@ -92,7 +100,13 @@ function Form() {
         />
       </label>
       <button className={s.button} type="submit">
-        Add contact
+        Add contact{' '}
+        <ClockLoader
+          color="#ffffff"
+          loading={isLoading}
+          size={25}
+          css={override}
+        />
       </button>
     </form>
   );
