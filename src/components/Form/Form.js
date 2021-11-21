@@ -1,9 +1,7 @@
 import { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { connect } from 'react-redux';
 
 import s from './Form.module.css';
-import * as actions from '../../redux/contacts/contact-actions';
 import {
   useCreateContactMutation,
   useFetchContactsQuery,
@@ -99,14 +97,5 @@ function Form() {
     </form>
   );
 }
-// Form.propTypes = {
-//   onAddContact: PropTypes.func.isRequired,
-// };
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//     onAddContact: value => dispatch(actions.addNewContact(value)),
-//   };
-// };
 
 export default Form;
