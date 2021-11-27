@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from 'uuid';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import s from './Filter.module.css';
 import { addFilter } from '../../redux/contacts/contact-actions';
 
-function Filter({ onAddFilter }) {
-  // const inputId = uuidv4();
+function Filter() {
+  const dispatch = useDispatch();
   return (
     <label className={s.label}>
       <div>Find contact by name</div>
@@ -14,15 +14,10 @@ function Filter({ onAddFilter }) {
         type="text"
         id={uuidv4()}
         name="filter"
-        onChange={onAddFilter}
+        onChange={e => dispatch(addFilter(e.target.value))}
       />
     </label>
   );
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onAddFilter: e => dispatch(addFilter(e.target.value)),
-  };
-};
-export default connect(null, mapDispatchToProps)(Filter);
+export default Filter;

@@ -5,7 +5,6 @@ import { contactsApi } from './contacts/contactsSlice';
 
 export const store = configureStore({
   reducer: {
-    // contacts: contactReducer,
     [contactsApi.reducerPath]: contactsApi.reducer,
     filter: filterReducer,
   },

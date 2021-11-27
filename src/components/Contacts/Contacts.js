@@ -1,12 +1,10 @@
-// import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import ClockLoader from 'react-spinners/ClockLoader';
 import { css } from '@emotion/react';
 
 import ContactItem from './contactItem';
 import s from './Contacts.module.css';
-import { useFetchContactsQuery } from '../../redux/contacts/contactsSlice';
-import getFilter from '../../redux/contacts/contacts-selectors';
+import { useGetContactsQuery } from '../../redux/contacts/contactsSlice';
 
 const override = css`
   display: block;
@@ -14,8 +12,9 @@ const override = css`
   border-color: rgb(187, 187, 187);
 `;
 
-function Contacts({ filter }) {
-  const { data, isFetching } = useFetchContactsQuery();
+function Contacts() {
+  const filter = useSelector(state => state.filter);
+  const { data, isFetching } = useGetContactsQuery();
   const filteredContacts = () => {
     const normalizeFilter = filter.toLowerCase();
     if (filter === '') {
@@ -36,10 +35,4 @@ function Contacts({ filter }) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
-    filter: getFilter(state),
-  };
-};
-
-export default connect(mapStateToProps, null)(Contacts);
+export default Contacts;

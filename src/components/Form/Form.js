@@ -6,7 +6,7 @@ import { css } from '@emotion/react';
 import s from './Form.module.css';
 import {
   useCreateContactMutation,
-  useFetchContactsQuery,
+  useGetContactsQuery,
 } from '../../redux/contacts/contactsSlice';
 
 const override = css`
@@ -22,7 +22,7 @@ function Form() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const [createContact, { isLoading }] = useCreateContactMutation();
-  const { data } = useFetchContactsQuery();
+  const { data } = useGetContactsQuery();
 
   const handleSubmit = e => {
     e.preventDefault();
