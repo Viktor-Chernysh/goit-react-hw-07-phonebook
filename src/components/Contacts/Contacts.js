@@ -5,6 +5,7 @@ import { css } from '@emotion/react';
 import ContactItem from './contactItem';
 import s from './Contacts.module.css';
 import { useGetContactsQuery } from '../../redux/contacts/contactsSlice';
+import { getFilter } from '../../redux/contacts/contacts-selectors';
 
 const override = css`
   display: block;
@@ -13,7 +14,7 @@ const override = css`
 `;
 
 function Contacts() {
-  const filter = useSelector(state => state.filter);
+  const filter = useSelector(getFilter);
   const { data, isFetching } = useGetContactsQuery();
   const filteredContacts = () => {
     const normalizeFilter = filter.toLowerCase();
